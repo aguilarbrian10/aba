@@ -1,0 +1,9 @@
+def isWordGuessed(secretWord, lettersGuessed):
+    word=0
+    for x in secretWord:
+        for y in lettersGuessed:
+            if y==x:
+                word+=1
+                break
+    return(word==len(secretWord))
+    
