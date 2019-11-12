@@ -1,0 +1,44 @@
+def Hangaroo(secretWord):
+    import string
+    lettersGuessed=[]
+    list(lettersGuessed)
+    lives=4
+    mistakesMade=0
+    print("WELCOME TO HANGAROO!")
+    print(" ")
+    print("Guess the ", len(secretWord)," letter word! Four tries or you will be hanged.")
+    print("")
+    print("Remaining lives: ", lives-mistakesMade)
+    print(getWordGuessed(secretWord,lettersGuessed))
+    print("Available Letters: ", getAvailableLetters(lettersGuessed))
+    
+    while isWordGuessed(secretWord,lettersGuessed) == False and mistakesMade!=lives:
+        guess=input("Guess a letter: ")
+        guessedLetter=guess.lower()
+        
+        
+        if len(guessedLetter)!=1 or (guessedLetter in string.ascii_lowercase) == False:
+            print("Invalid input! Please try again.")
+            print(" ")
+        elif (guessedLetter in secretWord) == False and (guessedLetter in lettersGuessed)==False:
+            mistakesMade+=1
+            print("Wrong answer! Remaining lives: ",lives-mistakesMade)
+            print(" ")
+            lettersGuessed.append(guessedLetter)
+        elif (guessedLetter in lettersGuessed)==True:
+            print("Letter has already been guessed. Please try again.")
+            print(" ")
+        else:
+            print("Good job! Nice guess.")
+            print(" ")
+            lettersGuessed.append(guessedLetter)
+            
+        print(getWordGuessed(secretWord,lettersGuessed))
+        print("Available Letters: ", getAvailableLetters(lettersGuessed))
+        
+    if isWordGuessed(secretWord,lettersGuessed) == True:
+        print(" ")
+        return(print("Congratulations! You've guessed the word correctly."))
+    else:
+        print(" ")
+        return(print("You lose! Game over. The word was \"", secretWord,"\"."))
