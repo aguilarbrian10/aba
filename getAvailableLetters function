@@ -1,0 +1,7 @@
+def getAvailableLetters(lettersGuessed):
+    import string
+    lowerletters=string.ascii_lowercase
+    for x in lettersGuessed:
+        if (x in lowerletters)==True and x!="":
+            lowerletters=lowerletters.replace(x,'_')
+    return(lowerletters)
